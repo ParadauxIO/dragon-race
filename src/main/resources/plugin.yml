@@ -1,0 +1,8 @@
+name: DragonRace
+version: '${project.version}'
+main: io.paradaux.dragonrace.DragonRace
+api-version: 1.18
+prefix: DragonRace
+authors: [ Paradaux ]
+description: Race to the dragon
+website: https://paradaux.io
