@@ -5,6 +5,7 @@ import io.paradaux.dragonrace.team.ETeam;
 import io.paradaux.dragonrace.team.ScoreboardManager;
 import io.paradaux.dragonrace.team.TeamManager;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -61,6 +62,30 @@ public class EventCommand implements CommandExecutor {
                     Contestant c = TeamManager.findContestant(Bukkit.getPlayer(args[2]));
                     c.setScore(Integer.parseInt(args[3]));
                 }
+            } case "debug" -> {
+                for (ETeam t : TeamManager.getTeams()) {
+                    StringBuilder contestants = new StringBuilder();
+
+                    for (int i = 0; i < t.getContestants().size()-1; i++) {
+                        contestants.append(t.getContestants().get(i).getPlayer().getName())
+                                .append(":")
+                                .append(t.getContestants().get(i).getScore())
+                                .append(", ");
+                    }
+
+                    contestants.append(t.getContestants().get(t.getContestants().size()-1).getPlayer().getName())
+                            .append(":")
+                            .append(t.getContestants().get(t.getContestants().size()-1).getScore());
+
+                    Component response = Component.text("Team: ")
+                            .color(NamedTextColor.RED)
+                            .append(Component.text(t.getName()).color(t.getColor()))
+                            .append(Component.text("[ " + contestants+ " ]"));
+
+                    sender.sendMessage(response);
+                }
+
+
             }
         }
 

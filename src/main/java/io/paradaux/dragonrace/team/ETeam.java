@@ -64,4 +64,8 @@ public class ETeam {
     public String getName() {
         return name;
     }
+
+    public TextColor getColor() {
+        return color;
+    }
 }
