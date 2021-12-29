@@ -4,5 +4,11 @@ main: io.paradaux.dragonrace.DragonRace
 api-version: 1.18
 prefix: DragonRace
 authors: [ Paradaux ]
+depend:
+  - GlowAPI
+  - PacketListenerApi
 description: Race to the dragon
 website: https://paradaux.io
+commands:
+  event:
+    usage: /event

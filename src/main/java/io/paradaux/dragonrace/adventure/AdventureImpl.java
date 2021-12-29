@@ -7,8 +7,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-import java.io.IOException;
-
 /**
  * AdventureImpl is a wrapper around the kyori/adventure Framework for Minecraft Components.
  * @author Rían Errity
@@ -79,13 +77,16 @@ public class AdventureImpl implements AutoCloseable {
 
     /**
      * Disables the Adventure integration, preventing further use internally and by dependencies.
-     * @throws IOException caused by closure.
      * */
     @Override
-    public void close() throws IOException {
+    public void close() {
         if(this.adventure != null) {
             this.adventure.close();
             this.adventure = null;
         }
+    }
+
+    public static MiniMessage getMiniMessage() {
+        return miniMessage;
     }
 }
